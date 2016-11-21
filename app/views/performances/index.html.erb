@@ -1,0 +1,6 @@
+<h1>All the performances</h1>
+<% @performances.each do |performance| %>
+  <h2><%= performance.name %></h2>
+  <p><%= performance.speciality %></p>
+  <p><%= performance.price %></p>
+<% end %>
