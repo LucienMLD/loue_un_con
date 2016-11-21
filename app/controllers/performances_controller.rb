@@ -24,7 +24,7 @@ class PerformancesController < ApplicationController
   private
 
   def set_params
-    params.permit(:performance).require(:speciality, :price, :area, :name)
+    params.require(:performance).permit(:speciality, :price, :area, :name)
   end
 
   def set_performance
