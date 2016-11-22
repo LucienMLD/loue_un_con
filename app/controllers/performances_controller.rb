@@ -15,6 +15,7 @@ class PerformancesController < ApplicationController
   def create
     @performance = Performance.new(set_params)
     @performance.user = current_user
+
     if @performance.save
       redirect_to performance_path(@performance)
     else
