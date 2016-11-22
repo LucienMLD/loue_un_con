@@ -1,5 +1,6 @@
 class PerformancesController < ApplicationController
  before_action :set_performance, only: [:show]
+ skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @performances = Performance.all
   end
@@ -13,7 +14,7 @@ class PerformancesController < ApplicationController
 
   def create
     @performance = Performance.new(set_params)
-    @performance.user_id = current_user
+    @performance.user_id = current_user[:id]
     if @performance.save
       redirect_to performance_path(@performance)
     else
