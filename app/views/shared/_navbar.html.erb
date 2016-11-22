@@ -7,6 +7,10 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
+    <% if user_signed_in? %>
+      <%= link_to "Mes performances", list_performances_path, :class=>"btn" %>
+      <%= link_to "Mes bookings", list_performances_path, :class=>"btn" %>
+    <% end %>
     <!-- Search form -->
     <form action="" class="navbar-wagon-search">
       <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
