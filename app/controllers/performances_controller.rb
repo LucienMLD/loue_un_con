@@ -1,5 +1,5 @@
 class PerformancesController < ApplicationController
- before_action :set_performance, only: [:show]
+ before_action :set_performance, only: [:show, :edit, :destroy]
  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @performances = Performance.all
@@ -21,6 +21,19 @@ class PerformancesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @performance = Performance.update(set_params)
+    redirect_to performance_path(@performance)
+  end
+
+  def destroy
+    @performance.destroy
+    redirect_to performances
   end
 
   private
