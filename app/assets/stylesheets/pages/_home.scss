@@ -1,4 +1,13 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
+.teaser-container {
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+#home-card-wrapper {
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+.wrapper h1 {
+  padding-bottom: 25px;
+}

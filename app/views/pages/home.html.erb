@@ -1,2 +1,43 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+  <div class="banner-content">
+    <h1>Envie de ruiner la soirée de tes amis ?</h1>
+    <h1>Envie de te séparer de ta femme ?</h1>
+    <p>Loue un con. Il vient chez toi. Il ruine la soirée. Et c'est gagné.</p>
+    <a class="btn btn-primary btn-lg">GET IT</a>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="container teaser-container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Trouve le con qui ruinera ta soirée. </br> Loue sa performance. </br> Observe le désastre.</h1>
+        <p>Nous rassemblons la plus grande communauté de cons, idiots, bouffons de 7 à 77 ans. Le con idéal est près de chez toi !</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper" id="home-card-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h1>Performances à la une</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <!-- insert <div class="card"> -->
+        <%= render 'shared/card' %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <!-- insert <div class="card"> -->
+        <%= render 'shared/card' %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <!-- insert <div class="card"> -->
+        <%= render 'shared/card' %>
+      </div>
+    </div>
+  </div>
+</div>
