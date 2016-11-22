@@ -1,6 +1,11 @@
-<h1>All the performances</h1>
-<% @performances.each do |performance| %>
-  <h2><%= link_to performance.name, performance_path(performance) %></h2>
-  <p><%= performance.speciality %></p>
-  <p><%= performance.price %></p>
-<% end %>
+<div class="wrapper">
+  <div class="container">
+    <h1>All the performances</h1>
+    <% @performances.each do |performance| %>
+      <h2><%= link_to performance.name, performance_path(performance) %></h2>
+      <p><%= performance.speciality %></p>
+      <p><%= performance.price %></p>
+    <% end %>
+  </div>
+</div>
+
