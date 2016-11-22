@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :users, only: [:new, :create, :show]
   resources :performances do
-    resources :bookings, only: [:new, :create, :show, :index, :delete]
+    resources :bookings, only: [:new, :create, :index, :delete]
   end
-  # get '/bookings/:id' => 'bookings#show', as: 'booking'
+  get '/bookings/:id' => 'bookings#show', as: 'booking'
 end

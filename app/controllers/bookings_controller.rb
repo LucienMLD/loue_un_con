@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
 
   def new
+    @performance = Performance.find(params[:performance_id])
     @booking = Booking.new
   end
 
