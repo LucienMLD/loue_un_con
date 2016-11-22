@@ -10,6 +10,7 @@
           <%= f.input :email, required: true, autofocus: true, placeholder: "ex : gerard@jongleur.com..." %>
           <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), placeholder: "something hard enough" %>
           <%= f.input :password_confirmation, required: true, placeholder: "But not too hard if you can't remember the field above..." %>
+          <%= f.input :photo, as: :attachinary %>
         </div>
 
         <div class="form-actions">
