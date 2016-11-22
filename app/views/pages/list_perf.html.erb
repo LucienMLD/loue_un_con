@@ -1,0 +1,8 @@
+<h1>My Performances</h1>
+
+<% @performances.each do |perf| %>
+  <h2><%= perf.name %></h2>
+  <h3>Spécialité : <%= perf.speciality %></h3>
+  <p>Prix : <%= perf.price %>€</p>
+  <p>Rayon d'action <%= perf.area %>km</p>
+<% end %>
