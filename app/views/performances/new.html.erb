@@ -1,8 +1,21 @@
-<h1>Add a Performance</h1>
-<%= simple_form_for @performance do |f| %>
-  <%= f.input :name %>
-  <%= f.input :speciality %>
-  <%= f.input :area %>
-  <%= f.input :price %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <h2 class="text-center">Add a Performance</h2>
+    <div class="col-md-4 col-md-offset-4">
+
+      <%= simple_form_for @performance do |f| %>
+
+        <div class="form-inputs">
+          <%= f.input :name %>
+          <%= f.input :speciality %>
+          <%= f.input :area %>
+          <%= f.input :price %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Create" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
