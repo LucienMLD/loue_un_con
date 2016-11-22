@@ -1,28 +1,42 @@
-<div class="banner" style="background-image: linear-gradient(135deg, rgba(142,14,0,0.6) 0%, rgba(81,45,168,0.2) 50%), url('<%= image_path('le-diner-de-cons-jacques-villeret.png') %> ');">
+<div class="banner" style="background-image: linear-gradient(-135deg, rgba(252, 234, 187, 0.5) 0%, rgba(248, 181, 0, 0.4) 50%), url('<%= image_path('le-diner-de-cons-jacques-villeret.png') %> ');">
   <div class="banner-content">
     <h1>Envie de ruiner la soirée de tes amis ?</h1>
     <h1>Envie de te séparer de ta femme ?</h1>
     <p>Loue un con. Il vient chez toi. Il ruine la soirée. Et c'est gagné.</p>
-    <a class="btn btn-primary btn-lg">GET IT</a>
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+          <form class="form-inline">
+              <input type="text" class="form-control" id="start-date-input" placeholder="start time">
+              <input type="text" class="form-control" id="end-date-input" placeholder="end time">
+            <button type="submit" class="btn btn-success">Voir comment ruiner</button>
+          </form>
+        </div>
+      </div>
   </div>
 </div>
 
 <div class="wrapper">
   <div class="container teaser-container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <h1>Trouve le con qui ruinera ta soirée. </br> Loue sa performance. </br> Observe le désastre.</h1>
-        <p>Nous rassemblons la plus grande communauté de cons, idiots, bouffons de 7 à 77 ans. Le con idéal est près de chez toi !</p>
-      </div>
-    </div>
+    <h1>Trouve le con qui ruinera ta soirée. </br> Loue sa performance. </br> Observe le désastre.</h1>
+    <p>Nous rassemblons la plus grande communauté de cons, idiots, bouffons de 7 à 77 ans. Le con idéal est près de chez toi !</p>
   </div>
 </div>
 
 <div class="wrapper" id="home-card-wrapper">
-  <div class="container">
+  <div class="container card-container">
+    <h1>Performances à la une</h1>
     <div class="row">
-      <div class="col-sm-8 col-sm-offset-2">
-        <h1>Performances à la une</h1>
+      <div class="col-xs-12 col-sm-4">
+        <!-- insert <div class="card"> -->
+        <%= render 'shared/card' %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <!-- insert <div class="card"> -->
+        <%= render 'shared/card' %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <!-- insert <div class="card"> -->
+        <%= render 'shared/card' %>
       </div>
     </div>
     <div class="row">
