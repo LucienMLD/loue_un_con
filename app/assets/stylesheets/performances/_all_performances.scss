@@ -1,8 +1,12 @@
+.all-performances-wrapper {
+  background-color: $lighter-gray;
+}
+
 .all-performances-container {
+  background-color: white;
   max-width: 960px;
   padding: 60px 17px;
   margin: 0 auto;
-  border: 1px solid red;
   h1 {
     color: $gray;
     margin: 0;
