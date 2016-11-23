@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :users, only: [:new, :create, :show]
   resources :performances do
-    resources :bookings, only: [:new, :create, :index, :delete]
+    resources :bookings, only: [:new, :create, :index]
   end
+  delete '/bookings/:id' => 'bookings#destroy', as: 'destroy_booking'
   get '/bookings/:id' => 'bookings#show', as: 'booking'
   get '/list-performances' => 'pages#list_perf'
 end
