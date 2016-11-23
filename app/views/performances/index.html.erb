@@ -15,7 +15,8 @@
             <div class="card-description">
               <h2><%= link_to performance.name, performance_path(performance) %></h2>
             </div>
-            <a class="card-link" href="#" ></a>
+            <%= image_tag('loue-un-con-logo.png', :class => "avatar card-user")%>
+            <%= link_to "", performance_path(performance), :class=>"card-link" %>
           </div>
           <div class="card-sub-info">
             <p><%= performance.price %> € </p><span>| à <%= performance.area %> km</span>
