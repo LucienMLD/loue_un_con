@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="container" id="list-bookings-container">
+
+    <h1>My Bookings</h1>
+
+      <% @bookings.reverse.each do |booking| %>
+        <div class="row">
+
+          <div class="col-xs-12 booking-details">
+            <div id="booking-infos">
+              <% booking_perf = booking.performance %>
+              <h2>Performance : <%= booking_perf.name %></h2>
+              <p>performed by : <%= booking_perf.user.first_name %> <%= booking_perf.user.last_name %> | Living in : <%= booking_perf.user.address %></p>
+              <p>Booking dates : from <%= booking.start_date %> to <%= booking.end_date %></p>
+            </div>
+            <%= link_to "Cancel booking", destroy_booking_path(booking), method: :delete, :class => "btn btn-danger btn-cancel" %>
+          </div>
+        </div>
+        <!-- end of row -->
+      <% end %>
+
+  </div>
+</div>

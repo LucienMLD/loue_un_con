@@ -1,0 +1,10 @@
+#list-bookings-container {
+  .booking-details {
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn-cancel {
+    align-self: flex-end;
+    font-size: 12px;
+  }
+}
