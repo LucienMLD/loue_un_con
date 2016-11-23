@@ -1,0 +1,9 @@
+<h1>My Performances</h1>
+
+<% @performances.each do |performance| %>
+  <h2><%= performance.name %></h2>
+  <h3>Spécialité : <%= performance.speciality %></h3>
+  <p>Prix : <%= performance.price %>€</p>
+  <p>Rayon d'action <%= performance.area %>km</p>
+  <p><%= link_to "Editer", edit_performance_path(performance) %> | <%= link_to "supprimer", performances_path(performance), method: :delete %></p>
+<% end %>

@@ -1,4 +1,6 @@
 .teaser-container {
+  max-width: 960px;
+  margin: 0 auto;
   padding-top: 80px;
   padding-bottom: 40px;
 }
@@ -8,6 +10,27 @@
   padding-bottom: 80px;
 }
 
+.card-container {
+  max-width: 960px;
+}
+
 .wrapper h1 {
   padding-bottom: 25px;
+}
+
+// ------------------
+// FORM INLINE
+// ------------------
+.form-inline {
+  margin: 0 30px;
+  padding: 25px 0;
+  .btn,
+  .form-control {
+    height: 45px;
+  }
+}
+
+#start-date-input,
+#end-date-input {
+  font-size: 12px;
 }

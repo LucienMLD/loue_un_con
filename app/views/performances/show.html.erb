@@ -1,3 +1,10 @@
 <h1><%= @performance.name %></h1>
 <p><%= @performance.speciality %></p>
 <p><%= @performance.price %></p>
+<% if @performance.photo? %>
+  <p><%= cl_image_tag @performance.photo.path, width: 400, height: 300, crop: :fill  %></p>
+<% else %>
+  <p><%= image_tag('smiling-mr-bean-grey.jpg') %></p>
+<% end %>
+<%= link_to 'Supprimer', performance_path(@performance), method: :delete %>
+
