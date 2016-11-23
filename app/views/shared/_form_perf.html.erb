@@ -1,14 +1,14 @@
 <%= simple_form_for @performance do |f| %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :speciality %>
-    <%= f.input :area %>
-    <%= f.input :price %>
+  <div class="form-inputs" id="new-perf-form">
+    <%= f.input :name, label: 'Nom de ta "performance"', placeholder: "ex: jonglage de croquettes..."%>
+    <%= f.input :speciality, label: 'La catégorie', placeholder: "ex: Art, Collection, Bouffe..." %>
+    <%= f.input :area, label: 'Rayon géographique', placeholder: "en km"%>
+    <%= f.input :price, label: 'Le prix', placeholder: "en €"%>
     <%= f.input :photo, as: :attachinary %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Create" %>
+    <%= f.button :submit, "On y va", class: "btn btn-success" %>
   </div>
 <% end %>
