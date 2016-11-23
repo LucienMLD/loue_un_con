@@ -1,11 +1,10 @@
 .card {
-  margin: 10px 0;
+  margin: 10px 0 5px 0;
   height: 175px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white;
   position: relative;
-  border-radius:2px;
+  border-radius:3px;
 }
 .card-user {
   position: absolute;
@@ -13,6 +12,7 @@
   top: 10px;
 }
 .card-category {
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   position: absolute;
   top: 10px;
   left: 10px;
@@ -25,7 +25,13 @@
   left: 10px;
 }
 .card-description h2 {
+  color: white;
   font-size: 24px;
+  a {
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+  }
 }
 .card-description p {
   font-size: 13px;
@@ -40,6 +46,23 @@
   background: black;
   opacity: 0;
 }
-.card-link:hover{
-  opacity: 0.1;
+.card-link:hover {
+  opacity: 0.04;
+}
+
+.card:hover + .card-sub-info {
+  color: orange;
+  p {
+    font-weight: bold;
+  }
+}
+
+.card-sub-info {
+  color: $gray;
+  p {
+    display: inline;
+  }
+  span {
+    font-size: 11px;
+  }
 }

@@ -34,7 +34,7 @@ class PerformancesController < ApplicationController
 
   def destroy
     @performance.destroy
-    redirect_to performances
+    redirect_to performances_path
   end
 
   private
@@ -44,6 +44,6 @@ class PerformancesController < ApplicationController
   end
 
   def set_performance
-     @performance = Performance.find(params[:id])
+    @performance = Performance.find(params[:id])
   end
 end

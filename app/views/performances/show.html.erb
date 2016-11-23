@@ -2,3 +2,4 @@
 <p><%= @performance.speciality %></p>
 <p><%= @performance.price %></p>
 <p><%= cl_image_tag @performance.photo.path, width: 400, height: 300, crop: :fill  %></p>
+<%= link_to 'Supprimer', performance_path(@performance), method: :delete %>

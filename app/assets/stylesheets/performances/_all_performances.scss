@@ -1,0 +1,21 @@
+.all-performances-wrapper {
+  background-color: $lighter-gray;
+}
+
+.all-performances-container {
+  background-color: white;
+  max-width: 960px;
+  padding: 60px 17px;
+  margin: 0 auto;
+  h1 {
+    color: $gray;
+    margin: 0;
+    padding-bottom: 60px;
+  }
+}
+
+.all-performances-container h1 span:hover {
+  color: $gradient-yellow-2;
+  font-weight: bolder;
+}
+
