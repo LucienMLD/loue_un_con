@@ -17,7 +17,7 @@
 
 <div class="wrapper">
   <div class="container teaser-container">
-    <h1>Trouve le con qui ruinera ta soirée. </br> Loue sa performance. </br> Observe le désastre.</h1>
+    <h1>Trouve le <span>con</span> qui ruinera ta soirée. </br> Loue sa <span>performance</span>. </br> Observe le <span>désastre</span>.</h1>
     <p>Nous rassemblons la plus grande communauté de cons, idiots, bouffons de 7 à 77 ans. Le con idéal est près de chez toi !</p>
   </div>
 </div>
@@ -26,33 +26,33 @@
   <div class="container card-container">
     <h1>Performances à la une</h1>
     <div class="row">
-      <div class="col-xs-12 col-sm-4">
+
+      <!-- render n last added performances -->
+      <% @performances.last(4).reverse.each do |performance| %>
+        <div class="col-xs-12 col-sm-6">
         <!-- insert <div class="card"> -->
-        <%= render 'shared/card' %>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <!-- insert <div class="card"> -->
-        <%= render 'shared/card' %>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <!-- insert <div class="card"> -->
-        <%= render 'shared/card' %>
-      </div>
+
+        <% if performance.photo? %>
+          <div class="card" style="background-image: linear-gradient(-135deg, rgba(252, 234, 187, 0.5) 0%, rgba(248, 181, 0, 0.4) 50%), url('<%= cl_image_path performance.photo.path, height: 80, width: 200, crop: :fill %>');" >
+        <% else %>
+          <div class="card" style="background-image: linear-gradient(-135deg, rgba(252, 234, 187, 0.5) 0%, rgba(248, 181, 0, 0.4) 50%), url('<%= image_path('smiling-mr-bean-grey.jpg') %>');" >
+        <% end %>
+            <div class="card-category"><%= performance.speciality %></div>
+            <div class="card-description">
+              <h2><%= link_to performance.name, performance_path(performance) %></h2>
+            </div>
+            <%= image_tag('loue-un-con-logo.png', :class => "avatar card-user")%>
+            <%= link_to "", performance_path(performance), :class=>"card-link" %>
+          </div>
+        <div class="card-sub-info">
+          <p><%= performance.price %> € </p><span>| à <%= performance.area %> km</span>
+        </div>
+
+        </div>
+      <% end %>
     </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <!-- insert <div class="card"> -->
-        <%= render 'shared/card' %>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <!-- insert <div class="card"> -->
-        <%= render 'shared/card' %>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <!-- insert <div class="card"> -->
-        <%= render 'shared/card' %>
-      </div>
+    <div class="text-right">
+      <%= link_to "Tout voir", performances_path, :class => "btn btn-success" %>
     </div>
-    <p class="text-right"><%= link_to "Tout voir", performances_path %></p>
   </div>
 </div>

@@ -1,10 +1,15 @@
-.all-performances-wrapper {
+.wrapper {
   background-color: $lighter-gray;
 }
 
-.all-performances-container {
+.container {
   background-color: white;
+  box-shadow: 0px 2px 5px 0px $light-gray;
   max-width: 960px;
+  padding: 40px 20px;
+}
+
+.all-performances-container {
   padding: 60px 17px;
   margin: 0 auto;
   h1 {
