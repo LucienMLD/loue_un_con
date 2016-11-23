@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :performances do
     resources :bookings, only: [:new, :create, :index, :delete]
   end
+  get "dashboard" => 'pages#dashboard'
   get '/bookings/:id' => 'bookings#show', as: 'booking'
   get '/list-performances' => 'pages#list_perf'
 end
