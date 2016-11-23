@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show]
+  before_action :set_booking, only: [:show, :destroy]
 
   def show
     @performance = @booking.performance
@@ -20,6 +20,11 @@ class BookingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @booking.destroy
+    redirect_to list_bookings_path
   end
 
   private
