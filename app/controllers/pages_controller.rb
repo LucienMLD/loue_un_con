@@ -3,6 +3,10 @@ class PagesController < ApplicationController
   def home
   end
 
+  def dashboard
+    @user = @current_user
+  end
+
   def list_perf
     @performances = current_user.performances
   end
