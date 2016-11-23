@@ -12,4 +12,8 @@ class PagesController < ApplicationController
   def list_perf
     @performances = current_user.performances
   end
+
+  def list_bookings
+    @bookings = current_user.bookings
+  end
 end
