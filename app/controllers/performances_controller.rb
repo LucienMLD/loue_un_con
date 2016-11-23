@@ -3,7 +3,13 @@ class PerformancesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @performances = Performance.all
+    @performances = Performance.where.not(latitude: nil, longitude: nil)
+
+    @marker = Gmaps4rails.build_markers(@performances) do |performance, marker|
+      marker.lat performance.latitude
+      marker.lng performance.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
 
   def show
@@ -16,6 +22,7 @@ class PerformancesController < ApplicationController
   def create
     @performance = Performance.new(set_params)
     @performance.user = current_user
+    @performance.address = current_user.address
 
     if @performance.save
       redirect_to performance_path(@performance)

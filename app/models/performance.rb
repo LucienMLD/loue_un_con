@@ -6,5 +6,7 @@ class Performance < ApplicationRecord
   validates :price, presence: true, allow_blank: false
   validates :area, presence: true, allow_blank: false
   validates :name, presence: true, allow_blank: false
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
 end
