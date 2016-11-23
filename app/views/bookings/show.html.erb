@@ -1,0 +1,15 @@
+<div class="wrapper booking-wrapper">
+  <div class="container booking-show">
+    <h1><%= @performance.name %></h1>
+    <h2>Du <%= @booking.start_date %> au <%= @booking.end_date %></h2>
+    <p><% if @performance.photo? %>
+          <%= cl_image_tag @performance.photo.path %>
+        <% else %>
+          <%= image_path('smiling-mr-bean-grey.jpg') %>
+        <% end %>
+    </p>
+    <p>Sécialité : <%= @performance.speciality %></p>
+    <h3>Prix : <%= @performance.price %>€</h3>
+    <p><%= link_to "Supprimer", destroy_booking_path(@booking), method: :delete %></p>
+  </div>
+</div>
