@@ -1,25 +1,15 @@
-<div class="banner" style="background-image: linear-gradient(-135deg, rgba(252, 234, 187, 0.5) 0%, rgba(248, 181, 0, 0.4) 50%), url('<%= image_path('le-diner-de-cons-jacques-villeret.png') %> ');">
+<div class="banner" id="banner-new-perf" style="background-image: linear-gradient(-135deg, rgba(252, 234, 187, 0.8) 0%, rgba(248, 181, 0, 0.6) 50%), url('<%= image_path('fondue-bronzés.jpg') %> ');">
   <div class="banner-content">
-    <h1>Envie de ruiner la soirée de tes amis ?</h1>
-    <h1>Envie de te séparer de ta femme ?</h1>
-    <p>Loue un con. Il vient chez toi. Il ruine la soirée. Et c'est gagné.</p>
+    <h1>Comment voudrais-tu bousiller un bon moment ?</h1>
+    <div class="container" id="new-perf-container">
       <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-          <form class="form-inline">
-              <input type="text" class="form-control" id="start-date-input" placeholder="start time">
-              <input type="text" class="form-control" id="end-date-input" placeholder="end time">
-            <button type="submit" class="btn btn-success">Voir comment ruiner</button>
-          </form>
+        <div class="col-md-4 col-md-offset-4">
+          <%= render 'shared/form_perf' %>
         </div>
       </div>
+    </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <h2 class="text-center">Add a Performance</h2>
-    <div class="col-md-4 col-md-offset-4">
-      <%= render 'shared/form_perf' %>
-    </div>
-  </div>
+<div class="wrapper">
 </div>

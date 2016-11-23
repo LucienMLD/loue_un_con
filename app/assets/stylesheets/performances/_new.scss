@@ -1,0 +1,19 @@
+#banner-new-perf {
+  height: calc(100vh - 70px);
+}
+
+#new-perf-container {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+#new-perf-form {
+  .form-group {
+    text-align: left;
+    padding-bottom: 10px;
+  }
+  input {
+    font-size: 12px;
+    text-align: left;
+  }
+}
