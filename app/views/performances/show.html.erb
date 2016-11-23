@@ -1,10 +1,41 @@
-<h1><%= @performance.name %></h1>
-<p><%= @performance.speciality %></p>
-<p><%= @performance.price %></p>
-<% if @performance.photo? %>
-  <p><%= cl_image_tag @performance.photo.path, width: 400, height: 300, crop: :fill  %></p>
-<% else %>
-  <p><%= image_tag('smiling-mr-bean-grey.jpg') %></p>
-<% end %>
-<%= link_to 'Supprimer', performance_path(@performance), method: :delete %>
+<div class="wrapper" id="perf-show-wrapper">
+  <div class="container" id="perf-show-container">
+    <h1>performance : <span><%= @performance.name %></span></h1>
 
+    <div class="row">
+      <div class="col-xs-12">
+        <% if @performance.photo? %>
+          <div  id="performance-photo"  style="background-image: linear-gradient(-135deg, rgba(252, 234, 187, 0.5) 0%, rgba(248, 181, 0, 0.4) 50%), url('<%= cl_image_path @performance.photo.path, height: 300, crop: :fill %>');" >
+        <% else %>
+          <div id="performance-photo" style="background-image: linear-gradient(-135deg, rgba(252, 234, 187, 0.5) 0%, rgba(248, 181, 0, 0.4) 50%), url('<%= image_path('smiling-mr-bean-grey.jpg')%>');" >
+        <% end %>
+        </div>
+      </div>
+      <!-- end of col -->
+    </div>
+    <!-- end of row -->
+    <div class="row">
+      <div class="col-xs-12">
+        <img src="http://placehold.it/920x200" id="perf-location">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12" id="perf-show-description">
+        <div id="perf-show-description-content">
+          <p><strong>Catégorie : </strong><%= @performance.speciality %></p>
+          <p><strong>Prix : </strong><%= @performance.price %> €</p>
+        </div>
+        <% if !current_user.nil? && @performance.user_id == current_user.id %>
+          <%= link_to 'Supprimer de mes performances', performance_path(@performance), method: :delete, class: "btn btn-danger" %>
+        <% else %>
+          <%= link_to 'Booker', new_performance_booking_path(@performance), class: "btn btn-success" %>
+        <% end %>
+      </div>
+      <!-- end of col -->
+    </div>
+    <!-- end of row -->
+
+  </div>
+  <!-- end of container -->
+</div>
