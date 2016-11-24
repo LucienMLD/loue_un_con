@@ -1,10 +1,10 @@
 $(document).ready(function() {
-  var user_address = $('#user_address').get(0);
+  var performance_address = $('#performance_address').get(0);
 
-  if (user_address) {
-    var autocomplete = new google.maps.places.Autocomplete(user_address, { types: ['geocode'] });
+  if (performance_address) {
+    var autocomplete = new google.maps.places.Autocomplete(performance_address, { types: ['geocode'] });
     google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-    google.maps.event.addDomListener(user_address, 'keydown', function(e) {
+    google.maps.event.addDomListener(performance_address, 'keydown', function(e) {
       if (e.keyCode == 13) {
         e.preventDefault(); // Do not submit the form on Enter.
       }
@@ -16,11 +16,11 @@ function onPlaceChanged() {
   var place = this.getPlace();
   var components = getAddressComponents(place);
 
-  $('#user_address').trigger('blur').val(components.address);
-  $('#user_zip_code').val(components.zip_code);
-  $('#user_city').val(components.city);
+  $('#performance_address').trigger('blur').val(components.address);
+  $('#performance_zip_code').val(components.zip_code);
+  $('#performance_city').val(components.city);
   if (components.country_code) {
-    $('#user_country').val(components.country_code);
+    $('#performance_country').val(components.country_code);
   }
 }
 

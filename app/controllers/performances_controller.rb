@@ -26,7 +26,7 @@ class PerformancesController < ApplicationController
   def create
     @performance = Performance.new(set_params)
     @performance.user = current_user
-    @performance.address = current_user.address
+    @performance.full_address = @performance.address + ", " + @performance.zip_code + " " + @performance.city
 
     if @performance.save
       redirect_to performance_path(@performance)
@@ -51,7 +51,7 @@ class PerformancesController < ApplicationController
   private
 
   def set_params
-    params.require(:performance).permit(:speciality, :price, :area, :name, :photo)
+    params.require(:performance).permit(:speciality, :price, :area, :name, :photo, :address, :zip_code, :city)
   end
 
   def set_performance
