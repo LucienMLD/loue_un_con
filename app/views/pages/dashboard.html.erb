@@ -1,14 +1,86 @@
-<div class="wrapper">
+<div class="wrapper dashboard-wrapper">
   <div class="container">
-    <% if current_user.facebook_picture_url? %>
-      <%= cl_image_path current_user.facebook_picture_url.path %>
-    <% end %>
-  </div>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <p><%= current_user.email %></p>
-      <p><%= current_user.first_name %></p>
-      <p><%= current_user.last_name %></p>
+    <div class="text-center">
+      <% if current_user.facebook_picture_url? %>
+        <%= cl_image_tag current_user.facebook_picture_url, :class=>"default-avatar-xxl", :crop=>"fill"%>
+      <% else %>
+          <%= cl_image_tag("y3kxhtlifdvqqkg8outb.png", :crop=>"fit", :class=>"default-avatar-xxl", :effect=>"grayscale") %>
+      <% end %>
+
     </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="tabs">
+          <a class="tab active" href="#">
+            <div class="tab-content">
+              <h3>Infos</h3>
+            </div>
+          </a>
+          <a class="tab" href="#">
+            <div class="tab-content">
+              <h3>Mes performances</h3>
+            </div>
+          </a>
+          <a class="tab" href="#">
+            <div class="tab-content">
+              <h3>Bookings</h3>
+              <p>que j'ai réservé</p>
+            </div>
+          </a>
+          <a class="tab" href="#">
+            <div class="tab-content">
+              <h3>Bookings</h3>
+              <p>Mes demandes</p>
+            </div>
+          </a>
+        </div>
+        <!-- end of tabs -->
+      </div>
+      <!-- end of col-sm-12 -->
+    </div>
+    <!-- end of row -->
+
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
+        <p>email : <%= current_user.email %></p>
+        <p>address : <%= current_user.address %></p>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~ GOOGLE MAP ~~~~~~~~~~~ -->
+        <div id="map" style="width: 100%; height: 400px;"></div>
+
+        <% content_for(:after_js) do %>
+          <script>
+            $(document).ready(function() {
+              var styles = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#edc200"}]},{"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.highway","elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"},{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#f5a301"},{"visibility":"on"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#000000"}]},{"featureType":"water","elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]}];
+
+              var handler = Gmaps.build('Google');
+              handler.buildMap({
+                provider: {
+                  styles: styles
+                },
+                internal: { id: 'map' } }, function() {
+                markers = handler.addMarkers(<%= raw @marker.to_json %>);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                if (markers.length == 0) {
+                  handler.getMap().setZoom(2);
+                } else if (markers.length == 1) {
+                  handler.getMap().setZoom(14);
+                }
+              });
+            });
+          </script>
+        <% end %>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~ END OF GOOGLE MAP ~~~~~~~~~~~ -->
+
+      </div>
+      <!-- end of col-md-4 -->
+    </div>
+    <!-- end of row -->
+
   </div>
+  <!-- end of container -->
 </div>
