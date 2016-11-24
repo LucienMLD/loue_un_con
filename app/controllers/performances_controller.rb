@@ -13,6 +13,10 @@ class PerformancesController < ApplicationController
   end
 
   def show
+    @marker = Gmaps4rails.build_markers(@performance) do |performance, marker|
+      marker.lat performance.latitude
+      marker.lng performance.longitude
+    end
   end
 
   def new

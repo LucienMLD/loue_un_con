@@ -1,9 +1,11 @@
-.list-bookings-wrapper {
-  padding: 40px 0;
+.booking-index-wrapper {
+  padding-bottom: 40px;
+  padding-top: 40px;
   min-height: calc(100vh - 70px);
 }
 
 #list-bookings-container {
+  padding: 20px 20px;
   .booking-details {
     display: flex;
     justify-content: space-between;

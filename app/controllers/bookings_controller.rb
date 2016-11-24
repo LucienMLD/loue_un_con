@@ -13,6 +13,8 @@ class BookingsController < ApplicationController
   def create
     @performance = Performance.find(params[:performance_id])
     @booking = Booking.new(set_params)
+    @booking.end_date = @booking.start_date + (@booking.duration * 60 * 60)
+    @booking.price = @performance.price * @booking.duration
     @booking.user = current_user
     @booking.performance = @performance
     if @booking.save
@@ -34,6 +36,6 @@ class BookingsController < ApplicationController
   end
 
   def set_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :duration)
   end
 end

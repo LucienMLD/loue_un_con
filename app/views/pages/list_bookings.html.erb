@@ -1,7 +1,7 @@
-<div class="wrapper list-bookings-wrapper">
+<div class="wrapper booking-index-wrapper">
   <div class="container" id="list-bookings-container">
 
-    <h1>My Bookings</h1>
+    <h1>Mes Bookings</h1>
 
       <% @bookings.reverse.each do |booking| %>
         <div class="row">
@@ -10,11 +10,13 @@
             <div id="booking-infos">
               <% booking_perf = booking.performance %>
               <h2>Performance : <%= booking_perf.name %></h2>
-              <p>performed by : <%= booking_perf.user.first_name %> <%= booking_perf.user.last_name %> | Living in : <%= booking_perf.user.address %></p>
-              <p>Booking dates : from <%= booking.start_date %> to <%= booking.end_date %></p>
-              <p>Price : <%= booking_perf.price %> €</p>
+
+              <h4>Prix : <%= booking.price %>€</h4>
+              <p>Performeur : <%= booking_perf.user.first_name %> <%= booking_perf.user.last_name %> | Réside à : <%= booking_perf.user.address %></p>
+              <p>Date : du <%= booking.start_date.strftime('%e/%m/%Y à %Hh%M') %> au <%= booking.end_date.strftime('%e/%m/%Y à %Hh%M') %></p>
+
             </div>
-            <%= link_to "Cancel booking", destroy_booking_path(booking), method: :delete, :class => "btn btn-danger btn-cancel" %>
+            <%= link_to "Supprimer booking", destroy_booking_path(booking), method: :delete, :class => "btn btn-danger btn-cancel" %>
           </div>
         </div>
         <!-- end of row -->

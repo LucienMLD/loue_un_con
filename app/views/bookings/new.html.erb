@@ -1,19 +1,25 @@
-<div class="container">
-  <div class="row">
-    <h2 class="text-center">Create booking</h2>
-    <div class="col-md-4 col-md-offset-4">
+<div class="wrapper booking-new-wrapper">
+  <div class="container booking-new-container">
+    <div class="row">
+      <h2 class="text-center">Réserver une performance</h2>
+        <div class="col-md-4 col-md-offset-4 ">
 
-      <%= simple_form_for [@performance, @booking] do |f| %>
 
-        <div class="form-inputs">
-          <%= f.input :start_date%>
-          <%= f.input :end_date%>
-        </div>
+          <%= simple_form_for [@performance, @booking] do |f| %>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Create" %>
-        </div>
-      <% end %>
+            <div class="form-inputs ">
+              <%= f.input :start_date, as: :datetime, order: [:day, :month, :year, :hour], label: 'Date de début' %>
+              <%= f.input :duration, label: 'Durée de la préstation', placeholder: "en heures" %>
+            </div>
+
+
+            <div class="form-actions">
+              <%= f.button :submit, "Booker !" %>
+            </div>
+          <% end %>
+
+
+      </div>
     </div>
   </div>
 </div>

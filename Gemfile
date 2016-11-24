@@ -11,6 +11,8 @@ gem 'devise'
 gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -23,7 +25,7 @@ gem 'omniauth-facebook'
 gem 'cloudinary', '1.1.0'
 gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
-gem "coffee-rails"
+
 
 source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
