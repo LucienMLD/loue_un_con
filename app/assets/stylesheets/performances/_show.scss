@@ -1,8 +1,11 @@
 #perf-show-wrapper {
   padding-bottom: 40px;
+  padding-top: 40px;
+  min-height: calc(100vh - 70px);
 }
 
 #perf-show-container {
+  padding: 20px 20px;
   h1 {
     color: $gray;
     font-weight: lighter;
@@ -18,7 +21,8 @@
     width: 100%;
     background-size: cover;
     background-position: center;
-    margin: 40px 0;
+    margin-top: 30px;
+    margin-bottom: 20px;
   }
   #perf-location {
     margin-bottom: 40px;
@@ -30,3 +34,6 @@
   }
 }
 
+.perf-show-map {
+  margin-bottom: 20px;
+}
