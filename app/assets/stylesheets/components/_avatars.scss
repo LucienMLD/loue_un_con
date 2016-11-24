@@ -6,6 +6,14 @@
   width: 50px;
   border-radius: 50%;
 }
+
+.default-avatar-xxl {
+  width: 150px;
+  border-radius: 50%;
+  padding: 20px;
+  border: 1px solid $gradient-yellow-1;
+}
+
 .avatar-bordered {
   width: 30px;
   border-radius: 50%;

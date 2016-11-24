@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get '/bookings/:id'       => 'bookings#show', as: 'booking'
   get '/list-performances'  => 'pages#list_perf'
   get '/list-bookings'      => 'pages#list_bookings'
+  get '/dashboard'          => 'pages#dashboard'
 end
