@@ -6,9 +6,9 @@
     <%= f.input :speciality, label: 'La catégorie', placeholder: "ex: Art, Collection, Bouffe..." %>
     <%= f.input :area, label: 'Rayon géographique', placeholder: "en km"%>
     <%= f.input :price, label: "Le prix à l'heure", placeholder: "en €"%>
+    <%= f.input :zip_code, :as => :hidden %>
+    <%= f.input :city, :as => :hidden %>
     <%= f.input :address, required: true, placeholder: "Enter" %>
-    <%= f.input :zip_code %>
-    <%= f.input :city %>
     <%= f.input :photo, as: :attachinary %>
   </div>
 
