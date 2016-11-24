@@ -76,6 +76,90 @@
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- ~~~~~~~ END OF GOOGLE MAP ~~~~~~~~~~~ -->
 
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~ MY PERF ~~~~~~~~~~~ -->
+        <div class="row">
+          <h2>Mes performances</h2>
+          <% @performances.each do |performance| %>
+
+            <div class="col-xs-12">
+            <!-- insert <div class="card"> -->
+              <% if performance.photo? %>
+                <div class="card" style="background-image: linear-gradient(-135deg, rgba(252, 234, 187, 0.5) 0%, rgba(248, 181, 0, 0.4) 50%), url('<%= cl_image_path performance.photo.path, height: 80, width: 200, crop: :fill %>');" >
+              <% else %>
+                <div class="card" style="background-image: linear-gradient(-135deg, rgba(252, 234, 187, 0.5) 0%, rgba(248, 181, 0, 0.4) 50%), url('<%= image_path('smiling-mr-bean-grey.jpg') %>');" >
+              <% end %>
+                  <div class="card-category"><%= performance.speciality %></div>
+                  <div class="card-description">
+                    <h2><%= link_to performance.name, performance_path(performance) %></h2>
+                  </div>
+                  <%= link_to "", performance_path(performance), :class=>"card-link" %>
+                </div>
+              <div class="card-sub-info">
+                <p><%= performance.price %> € </p><span>| à <%= performance.area %> km</span>
+              </div>
+            </div>
+
+          <% end %>
+        </div>
+        <!-- end of row -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~ END OF MY PERF ~~~~~~~~~~~ -->
+
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~ MY BOOKINGS ~~~~~~~~~~~ -->
+        <h1>Mes Bookings</h1>
+
+        <% @bookings.reverse.each do |booking| %>
+          <div class="row">
+
+            <div class="col-xs-12 booking-details">
+              <div id="booking-infos">
+                <% booking_perf = booking.performance %>
+                <h2>Performance : <%= booking_perf.name %></h2>
+
+                <h4>Prix : <%= booking.price %>€</h4>
+                <p>Performeur : <%= booking_perf.user.first_name %> <%= booking_perf.user.last_name %> | Réside à : <%= booking_perf.user.address %></p>
+                <p>Date : du <%= booking.start_date.strftime('%e/%m/%Y à %Hh%M') %> au <%= booking.end_date.strftime('%e/%m/%Y à %Hh%M') %></p>
+
+              </div>
+              <%= link_to "Supprimer booking", destroy_booking_path(booking), method: :delete, :class => "btn btn-danger btn-cancel" %>
+            </div>
+          </div>
+          <!-- end of row -->
+        <% end %>
+        <!-- end of block -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~ END OF MY BOOKINGS ~~~~~~~~~~~ -->
+
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~ MY DEMANDS ~~~~~~~~~~~ -->
+        <h1>Mes demandes de booking</h1>
+
+        <% @booking_demands.reverse.each do |booking| %>
+          <div class="row">
+
+            <div class="col-xs-12 booking-details">
+              <div id="booking-infos">
+                <h2>Peformance : <%= booking.performance.name %></h2>
+                <p>Dates : de <%= booking.start_date %> à <%= booking.end_date %></p>
+                <p>Prix : <%= booking.price %></p>
+                <button class="btn btn-success">accepter</button>
+                <%= link_to "refuser", destroy_booking_path(booking), method: :delete, :class => "btn btn-danger" %>
+              </div>
+            </div>
+          </div>
+          <!-- end of row -->
+        <% end %>
+        <!-- end of block -->
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~ END OF MY DEMANDS ~~~~~~~~~~~ -->
+
+
       </div>
       <!-- end of col-md-4 -->
     </div>
