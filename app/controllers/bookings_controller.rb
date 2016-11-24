@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
     @performance = Performance.find(params[:performance_id])
     @booking = Booking.new(set_params)
     @booking.end_date = @booking.start_date + (@booking.duration * 60 * 60)
+    @booking.price = @performance.price * @booking.duration
     @booking.user = current_user
     @booking.performance = @performance
     if @booking.save
