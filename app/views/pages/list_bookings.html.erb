@@ -12,7 +12,7 @@
               <h2>Performance : <%= booking_perf.name %></h2>
 
               <h4>Prix : <%= booking.price %>€</h4>
-              <p>Performeur : <%= booking_perf.user.first_name %> <%= booking_perf.user.last_name %> | Réside à : <%= booking_perf.user.address %></p>
+              <p>Performeur : <%= booking_perf.user.first_name %> <%= booking_perf.user.last_name %> | Réside à : <%= booking_perf.full_address %></p>
               <p>Date : du <%= booking.start_date.strftime('%e/%m/%Y à %Hh%M') %> au <%= booking.end_date.strftime('%e/%m/%Y à %Hh%M') %></p>
 
             </div>
