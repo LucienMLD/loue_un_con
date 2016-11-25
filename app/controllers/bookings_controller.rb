@@ -25,8 +25,13 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking.destroy
-    # redirect_to list_bookings_path
+    if current_user.id == @booking.user_id
+      @booking.destroy
+      redirect_to list_bookings_path
+    else
+      @booking.destroy
+      redirect_to dashboard_path
+    end
   end
 
   private
