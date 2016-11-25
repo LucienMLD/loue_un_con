@@ -1,33 +1,41 @@
 <div class="wrapper booking-index-wrapper">
   <div class="container" id="list-bookings-container">
     <h1>Mes Bookings</h1>
+    <div id="btn-new-booking">
+      <%= link_to "En booker une autre !", performances_path, class: "btn btn-success btn-cancel" %>
+    </div>
     <div class="row">
-      <div class="col-xs-12" id="my-perf-title">
-          <% if @bookings.empty? %>
-            <h3>Vous n'avec pas encore de bookings !</h3>
-          <% else %>
-            <% @bookings.reverse.each do |booking| %>
-        </div>
-        </div>
-          <div class="row">
-
-            <div class="col-xs-12 booking-details">
-              <div id="booking-infos">
+    <!-- first row -->
+      <% if @bookings.empty? %>
+        <h3>Vous n'avec pas encore de bookings !</h3>
+      <% else %>
+        <% @bookings.reverse.each do |booking| %>
+          <div class="col-xs-12 booking-details" id="my-perf-title">
+            <div class="booking-infos">
+              <% unless booking.performance.photo.nil? %>
+                <%= cl_image_tag booking.performance.photo.path, width: 300, crop: :fill %>
+              <% else %>
+                <%= cl_image_tag("smiling-mr-bean-grey_agjbb9.jpg", width: 300, crop: :fill) %>
+              <% end %>
+              <div>
                 <% booking_perf = booking.performance %>
-                <h2>Performance : <%= booking_perf.name %></h2>
-
+                <h2><%= booking_perf.name %></h2>
                 <h4>Prix : <%= booking.price %>€</h4>
                 <p>Performeur : <%= booking_perf.user.first_name %> <%= booking_perf.user.last_name %> | Réside à : <%= booking_perf.full_address %></p>
                 <p>Date : du <%= booking.start_date.strftime('%e/%m/%Y à %Hh%M') %> au <%= booking.end_date.strftime('%e/%m/%Y à %Hh%M') %></p>
-
               </div>
               <%= link_to "Annuler ma demande", destroy_booking_path(booking), method: :delete, :class => "btn btn-danger btn-cancel" %>
             </div>
-          </div>
-          <!-- end of row -->
-        <% end %>
-      <% end %>
-      <!-- end of block -->
+            <!-- end of booking-infos -->
 
+          </div>
+          <!-- end of col-booking-details -->
+        <% end %>
+        <!-- end of block -->
+      <% end %>
+      <!-- end of booking.empty? -->
+    </div>
+    <!-- end of first row -->
   </div>
+  <!-- end of container -->
 </div>

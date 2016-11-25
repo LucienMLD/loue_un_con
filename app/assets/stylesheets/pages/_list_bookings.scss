@@ -6,11 +6,16 @@
 
 #list-bookings-container {
   padding: 20px 20px;
+  .row {
+    padding: 0 20px;
+  }
   .booking-details {
     display: flex;
     justify-content: space-between;
+    padding: 0;
   }
   .btn-cancel {
+    margin: 0 6px;
     align-self: flex-end;
     font-size: 12px;
   }
