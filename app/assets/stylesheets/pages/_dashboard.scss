@@ -2,6 +2,10 @@
   display: false;
 }
 
+.message-accepted-demand {
+  color: $green;
+}
+
 .dashboard-wrapper {
   padding: 40px 0;
   min-height: calc(100vh - 70px);
