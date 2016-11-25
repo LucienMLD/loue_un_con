@@ -3,23 +3,27 @@
 
     <h1>Mes Bookings</h1>
 
-      <% @bookings.reverse.each do |booking| %>
-        <div class="row">
+      <% if @bookings.empty? %>
+        <h3>Vous n'avec pas encore de bookings !</h3>
+      <% else %>
+        <% @bookings.reverse.each do |booking| %>
+          <div class="row">
 
-          <div class="col-xs-12 booking-details">
-            <div id="booking-infos">
-              <% booking_perf = booking.performance %>
-              <h2>Performance : <%= booking_perf.name %></h2>
+            <div class="col-xs-12 booking-details">
+              <div id="booking-infos">
+                <% booking_perf = booking.performance %>
+                <h2>Performance : <%= booking_perf.name %></h2>
 
-              <h4>Prix : <%= booking.price %>€</h4>
-              <p>Performeur : <%= booking_perf.user.first_name %> <%= booking_perf.user.last_name %> | Réside à : <%= booking_perf.full_address %></p>
-              <p>Date : du <%= booking.start_date.strftime('%e/%m/%Y à %Hh%M') %> au <%= booking.end_date.strftime('%e/%m/%Y à %Hh%M') %></p>
+                <h4>Prix : <%= booking.price %>€</h4>
+                <p>Performeur : <%= booking_perf.user.first_name %> <%= booking_perf.user.last_name %> | Réside à : <%= booking_perf.full_address %></p>
+                <p>Date : du <%= booking.start_date.strftime('%e/%m/%Y à %Hh%M') %> au <%= booking.end_date.strftime('%e/%m/%Y à %Hh%M') %></p>
 
+              </div>
+              <%= link_to "Annuler ma demande", destroy_booking_path(booking), method: :delete, :class => "btn btn-danger btn-cancel" %>
             </div>
-            <%= link_to "Annuler ma demande", destroy_booking_path(booking), method: :delete, :class => "btn btn-danger btn-cancel" %>
           </div>
-        </div>
-        <!-- end of row -->
+          <!-- end of row -->
+        <% end %>
       <% end %>
       <!-- end of block -->
 

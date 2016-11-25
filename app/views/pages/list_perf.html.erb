@@ -1,14 +1,16 @@
 <div class="wrapper list-perf-wrapper">
-  <div class="container list-perf-container">
+  <div class="container" id="list-perf-container">
     <div class="row">
       <div class="col-xs-12" id="my-perf-title">
-        <h1>My Performances</h1>
+        <h1>Mes performances</h1>
         <%= link_to "Ajouter une performance", new_performance_path, :class => "btn btn-success" %>
       </div>
     </div>
-    <div class="row">
-
-      <% @performances.each do |performance| %>
+    <div class="row card-index-perf">
+      <% if @performances.empty? %>
+        <h3>Vous n'avec pas encore de performances !</h3>
+      <% else %>
+        <% @performances.each do |performance| %>
 
         <div class="col-xs-12">
         <!-- insert <div class="card"> -->
@@ -24,10 +26,10 @@
               <%= link_to "", performance_path(performance), :class=>"card-link" %>
             </div>
           <div class="card-sub-info">
-            <p><%= performance.price %> € </p><span>| à <%= performance.area %> km</span>
+            <p><%= performance.price %> € / heure</p>
           </div>
         </div>
-
+        <% end %>
       <% end %>
     </div>
     <!-- end of row -->

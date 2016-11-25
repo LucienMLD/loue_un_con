@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :list_bookings
-  skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home, :search]
 
   def home
     @performances = Performance.all
