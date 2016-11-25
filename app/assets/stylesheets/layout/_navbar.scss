@@ -144,3 +144,13 @@
 
 
 
+.lien-navbar {
+  color: $gray;
+  text-decoration: none;
+  padding-left: 10px;
+}
+
+.lien-navbar:hover {
+  color: #d69d00;
+  text-decoration: none;
+}
