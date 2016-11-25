@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :destroy]
+  before_action :set_booking, only: [:show, :destroy, :update]
 
   def show
     @performance = @booking.performance
@@ -24,13 +24,17 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    @booking.accepted = 1
+    @booking.save
+  end
+
   def destroy
     if current_user.id == @booking.user_id
       @booking.destroy
       redirect_to list_bookings_path
     else
       @booking.destroy
-      redirect_to dashboard_path
     end
   end
 
