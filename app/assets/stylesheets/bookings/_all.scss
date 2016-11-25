@@ -1,0 +1,17 @@
+.booking-infos {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  img {
+    width: 300px;
+    margin-right: 15px;
+  }
+  div {
+    width: 400px;
+  }
+}
+
+#btn-new-booking {
+  margin-bottom: 20px;
+}
