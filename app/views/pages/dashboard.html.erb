@@ -7,6 +7,7 @@
           <%= cl_image_tag("y3kxhtlifdvqqkg8outb.png", :crop=>"fit", :class=>"default-avatar-xxl", :effect=>"grayscale") %>
       <% end %>
 
+
     </div>
     <div class="row">
       <div class="col-sm-12">
@@ -97,7 +98,7 @@
                     <%= link_to "", performance_path(performance), :class=>"card-link" %>
                   </div>
                 <div class="card-sub-info">
-                  <p><%= performance.price %> € </p><span>| à <%= performance.area %> km</span>
+                  <p><%= performance.price %> €/h</p><span> à une distance max de <%= performance.area %> km</span>
                 </div>
               </div>
 
@@ -142,15 +143,45 @@
         <div id="booking-demands-content" class="hidden dashboard-content">
 
           <% @booking_demands.reverse.each do |booking| %>
-            <div class="row">
+            <div class="row"  data-booking-id="<%= booking.id %>" >
 
               <div class="col-xs-12 booking-details">
                 <div id="booking-infos">
                   <h2>Peformance : <%= booking.performance.name %></h2>
                   <p>Dates : de <%= booking.start_date %> à <%= booking.end_date %></p>
-                  <p>Prix : <%= booking.price %></p>
-                  <button class="btn btn-success">accepter</button>
-                  <%= link_to "refuser", destroy_booking_path(booking), method: :delete, :class => "btn btn-danger" %>
+                  <p>Prix : <%= booking.price %> €</p>
+                  <p>Demande de : <%= booking.user.first_name %> <%= booking.user.last_name %></p>
+                  <p>Address : <%= booking.user.address %></p>
+
+                  <div id="booking-demand-map" style="width: 100%; height: 200px;"></div>
+
+                  <% content_for(:after_js) do %>
+                    <script>
+                      $(document).ready(function() {
+                        var styles = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#edc200"}]},{"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.highway","elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"},{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#f5a301"},{"visibility":"on"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#000000"}]},{"featureType":"water","elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]}];
+
+                        var handler = Gmaps.build('Google');
+                        handler.buildMap({
+                          provider: {
+                            styles: styles
+                          },
+                          internal: { id: 'booking-demand-map' } }, function() {
+                          markers = handler.addMarkers(<%= raw @marker.to_json %>);
+                          handler.bounds.extendWith(markers);
+                          handler.fitMapToBounds();
+                          if (markers.length == 0) {
+                            handler.getMap().setZoom(2);
+                          } else if (markers.length == 1) {
+                            handler.getMap().setZoom(14);
+                          }
+                        });
+                      });
+                    </script>
+                  <% end %>
+                  <div> <!-- class="accept-refuse-demand-buttons" -->
+                    <%= link_to "Accepter", accept_booking_path(booking), method: :patch, :class => "btn btn-success accept-button", remote: true  %>
+                    <%= link_to "refuser", destroy_booking_path(booking), method: :delete, :class => "btn btn-danger", remote: true %>
+                  </div>
                 </div>
               </div>
             </div>

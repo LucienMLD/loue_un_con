@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   delete '/bookings/:id'    => 'bookings#destroy', as: 'destroy_booking'
   get '/bookings/:id'       => 'bookings#show', as: 'booking'
+  patch '/bookings/:id'     => 'bookings#update', as: 'accept_booking'
   get '/list-performances'  => 'pages#list_perf'
   get '/list-bookings'      => 'pages#list_bookings'
   get '/dashboard'          => 'pages#dashboard'

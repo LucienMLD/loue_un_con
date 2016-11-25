@@ -4,6 +4,7 @@
 
     <div class="row">
       <div class="col-xs-12">
+        <p><strong>par : </strong><%= @performance.user.first_name %> <%= @performance.user.last_name %></p>
         <% if @performance.photo? %>
           <div  id="performance-photo"  style="background-image: linear-gradient(-135deg, rgba(252, 234, 187, 0.5) 0%, rgba(248, 181, 0, 0.4) 50%), url('<%= cl_image_path @performance.photo.path, height: 300, crop: :fill %>');" >
         <% else %>
@@ -53,7 +54,7 @@
         <% if !current_user.nil? && @performance.user_id == current_user.id %>
           <%= link_to 'Supprimer de mes performances', performance_path(@performance), method: :delete, class: "btn btn-danger" %>
         <% else %>
-          <%= link_to 'Booker', new_performance_booking_path(@performance), class: "btn btn-success" %>
+          <%= link_to 'Faire une demande de booking', new_performance_booking_path(@performance), class: "btn btn-success" %>
         <% end %>
       </div>
       <!-- end of col -->
