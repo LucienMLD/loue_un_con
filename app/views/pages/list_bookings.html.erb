@@ -16,7 +16,7 @@
               <p>Date : du <%= booking.start_date.strftime('%e/%m/%Y à %Hh%M') %> au <%= booking.end_date.strftime('%e/%m/%Y à %Hh%M') %></p>
 
             </div>
-            <%= link_to "Supprimer booking", destroy_booking_path(booking), method: :delete, :class => "btn btn-danger btn-cancel" %>
+            <%= link_to "Annuler ma demande", destroy_booking_path(booking), method: :delete, :class => "btn btn-danger btn-cancel" %>
           </div>
         </div>
         <!-- end of row -->

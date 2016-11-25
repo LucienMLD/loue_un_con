@@ -1,3 +1,7 @@
+.hidden {
+  display: false;
+}
+
 .dashboard-wrapper {
   padding: 40px 0;
   min-height: calc(100vh - 70px);
@@ -45,4 +49,5 @@
 .tab.active {
   background: white;
   color: $gradient-yellow-2;
+  text-decoration: none;
 }
