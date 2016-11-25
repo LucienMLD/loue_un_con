@@ -1,12 +1,14 @@
 <div class="wrapper booking-index-wrapper">
   <div class="container" id="list-bookings-container">
-
     <h1>Mes Bookings</h1>
-
-      <% if @bookings.empty? %>
-        <h3>Vous n'avec pas encore de bookings !</h3>
-      <% else %>
-        <% @bookings.reverse.each do |booking| %>
+    <div class="row">
+      <div class="col-xs-12" id="my-perf-title">
+          <% if @bookings.empty? %>
+            <h3>Vous n'avec pas encore de bookings !</h3>
+          <% else %>
+            <% @bookings.reverse.each do |booking| %>
+        </div>
+        </div>
           <div class="row">
 
             <div class="col-xs-12 booking-details">
