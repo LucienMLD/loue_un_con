@@ -6,7 +6,7 @@
         <%= render 'shared/search_form' %>
       </div>
 
-    <div id="map" style="width: 100%; height: 400px;"></div>
+    <div id="map" class="map-index-perf" style="width: 100%; height: 400px;"></div>
 
     <% content_for(:after_js) do %>
       <script>
@@ -50,7 +50,7 @@
             <%= link_to "", performance_path(performance), :class=>"card-link" %>
           </div>
           <div class="card-sub-info">
-            <p><%= performance.price %> € </p><span>| à <%= performance.area %> km</span>
+            <p><%= performance.price %> € / heure</p>
           </div>
         </div>
       <% end %>

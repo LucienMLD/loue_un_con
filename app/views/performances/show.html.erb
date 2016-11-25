@@ -49,7 +49,7 @@
       <div class="col-xs-12" id="perf-show-description">
         <div id="perf-show-description-content">
           <p><strong>Catégorie : </strong><%= @performance.speciality %></p>
-          <p><strong>Prix : </strong><%= @performance.price %> €</p>
+          <p><strong>Prix : </strong><%= @performance.price %> € / heure</p>
         </div>
         <% if !current_user.nil? && @performance.user_id == current_user.id %>
           <%= link_to 'Supprimer de mes performances', performance_path(@performance), method: :delete, class: "btn btn-danger" %>
