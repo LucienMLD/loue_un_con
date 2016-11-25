@@ -32,7 +32,13 @@ class PagesController < ApplicationController
     @performance = Performance.new
     @performances = Performance.all
     @city = params[:performance][:city]
-    @performances_search = Performance.where(city: @city.capitalize)
+
+    if @city.empty?
+      @performances_search = Performance.all
+    else
+      @performances_search = Performance.where(city: @city.capitalize)
+    end
+
     @marker = Gmaps4rails.build_markers(@performances_search) do |performance, marker|
       marker.lat performance.latitude
       marker.lng performance.longitude

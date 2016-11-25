@@ -4,7 +4,7 @@ class PerformancesController < ApplicationController
 
   def index
     @performances = Performance.where.not(latitude: nil, longitude: nil)
-
+    @performance = Performance.new
     @marker = Gmaps4rails.build_markers(@performances) do |performance, marker|
       marker.lat performance.latitude
       marker.lng performance.longitude

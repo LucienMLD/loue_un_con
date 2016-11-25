@@ -2,17 +2,22 @@
   <div class="container search-perf-container">
     <div class="row">
       <div class="col-xs-12" id="my-perf-title">
-        <h1>Performances à <%= @city %></h1>
-        <%= link_to "Ajouter une performance", new_performance_path, :class => "btn btn-success" %>
+        <h1><% if @city.empty? %>
+          Toutes les performances
+          <% else %>
+          Performances à <%= @city %>
+          <% end %>
+        </h1>
+
       </div>
     </div>
     <div class="row">
 
       <div class="col-xs-12 text-center" id="form_search_pages">
-        <p>Nouvelle recherche <%= render 'shared/search_form' %></p>
+        <%= render 'shared/search_form' %>
       </div>
 
-      <div class="col-xs-12">
+      <div class="col-xs-12" id="map-search-page">
       <div id="map" style="width: 100%; height: 400px;"></div>
       </div>
 
