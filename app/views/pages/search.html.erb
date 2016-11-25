@@ -1,0 +1,68 @@
+<div class="wrapper search-perf-wrapper">
+  <div class="container search-perf-container">
+    <div class="row">
+      <div class="col-xs-12" id="my-perf-title">
+        <h1>Performances à <%= @city %></h1>
+        <%= link_to "Ajouter une performance", new_performance_path, :class => "btn btn-success" %>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-xs-12 text-center" id="form_search_pages">
+        <p>Nouvelle recherche <%= render 'shared/search_form' %></p>
+      </div>
+
+      <div class="col-xs-12">
+      <div id="map" style="width: 100%; height: 400px;"></div>
+      </div>
+
+      <% content_for(:after_js) do %>
+        <script>
+          $(document).ready(function() {
+            var styles = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#edc200"}]},{"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.highway","elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"},{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#f5a301"},{"visibility":"on"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#000000"}]},{"featureType":"water","elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]}];
+
+            var handler = Gmaps.build('Google');
+            handler.buildMap({
+              provider: {
+                styles: styles
+              },
+              internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @marker.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        </script>
+      <% end %>
+
+      <% @performances_search.each do |performance| %>
+
+        <div class="col-xs-12">
+        <!-- insert <div class="card"> -->
+          <% if performance.photo? %>
+            <div class="card" style="background-image: linear-gradient(-135deg, rgba(252, 234, 187, 0.5) 0%, rgba(248, 181, 0, 0.4) 50%), url('<%= cl_image_path performance.photo.path, height: 80, width: 200, crop: :fill %>');" >
+          <% else %>
+            <div class="card" style="background-image: linear-gradient(-135deg, rgba(252, 234, 187, 0.5) 0%, rgba(248, 181, 0, 0.4) 50%), url('<%= image_path('smiling-mr-bean-grey.jpg') %>');" >
+          <% end %>
+              <div class="card-category"><%= performance.speciality %></div>
+              <div class="card-description">
+                <h2><%= link_to performance.name, performance_path(performance) %></h2>
+              </div>
+              <%= link_to "", performance_path(performance), :class=>"card-link" %>
+            </div>
+          <div class="card-sub-info">
+            <p><%= performance.price %> € </p><span>| à <%= performance.area %> km</span>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+    <!-- end of row -->
+  </div>
+  <!-- end of list-perf-container -->
+</div>
