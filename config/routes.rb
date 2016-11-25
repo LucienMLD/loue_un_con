@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get '/list-performances'  => 'pages#list_perf'
   get '/list-bookings'      => 'pages#list_bookings'
   get '/dashboard'          => 'pages#dashboard'
+  get '/search'             => 'pages#search'
 end

@@ -1,7 +1,7 @@
 class Performance < ApplicationRecord
   has_attachment :photo
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   validates :speciality, presence: true, allow_blank: false
   validates :price, presence: true, allow_blank: false
   validates :area, presence: true, allow_blank: false

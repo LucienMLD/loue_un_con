@@ -2,6 +2,10 @@
   <div class="container all-performances-container">
     <h1>Toutes les <span>performances !</span></h1>
 
+      <div class="col-xs-12 text-center" id="form_search_pages">
+        <%= render 'shared/search_form' %>
+      </div>
+
     <div id="map" style="width: 100%; height: 400px;"></div>
 
     <% content_for(:after_js) do %>

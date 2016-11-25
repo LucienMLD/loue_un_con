@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
-  has_many :performances
-  has_many :bookings
+  has_many :performances, dependent: :destroy
+  has_many :bookings, dependent: :destroy
   has_attachment :photo
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
