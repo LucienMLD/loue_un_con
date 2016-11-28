@@ -10,7 +10,9 @@ class PagesController < ApplicationController
   def dashboard
     @performances = current_user.performances
     # @booking_demands = []
-    @booking_demands = Booking.joins(:performance => :user).where.not(:user_id => current_user.id)
+    @booking_demands = Booking.joins(performance: :user).where(performance: current_user.performances)
+    # .where.not(:user_id => current_user.id)
+
 
     @marker = Gmaps4rails.build_markers(current_user) do |user_address, marker|
       marker.lat user_address.latitude
